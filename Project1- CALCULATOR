@@ -1,0 +1,185 @@
+// INDEX.HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CALCULATOR</title>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" placeholder="0" id="inputBox">
+    </div>
+    <div>
+    <button>AC</button>
+    <button>DEL</button>
+    <button>%</button>
+    <button>/</button>
+    </div>
+    <div>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button>*</button>
+    </div>
+    <div>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>-</button>
+    </div>
+    <div>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>+</button>
+    </div>
+
+
+
+
+
+ <button>00</button>
+    <button>0</button>
+    <button>.</button>
+
+
+    <button class="equalBtn">=</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+// STYLE.CSS
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #0a0a0a, #3a4452);
+}
+
+.calculator {
+    width: 300px;
+    border: 1px solid #3a4452;
+    padding: 20px;
+    border-radius: 16px;
+    background: transparent;
+    box-shadow: 0px 3px 15px rgba(113, 115, 119, 0.5);
+}
+
+input {
+    width: 100%;
+    border: none;
+    padding: 20px;
+    background: transparent;
+    box-shadow: 0px 3px 15px rgba(84, 84, 84, 0.1);
+    font-size: 32px;
+    text-align: right;
+    color: #ffffff;
+}
+
+input::placeholder {
+    color: #ffffff;
+}
+
+.button-box {
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    grid-gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+button {
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 20px;
+    box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.1),
+                4px 4px 10px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect */
+button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+/* Pressed effect */
+button:active {
+    transform: scale(0.95);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.equalBtn {
+    background-color: #fb7c14;
+    color: #fff;
+    font-weight: bold;
+}
+
+.equalBtn:hover {
+    background-color: #ff8f2c;
+}
+// SCRIPT.JS
+
+
+
+
+
+
+
+let input = document.getElementById('inputBox');
+let buttons = document.querySelectorAll
+('button');
+let string = "";
+let arr = Array.from(buttons);
+arr.forEach(button =>{
+    button.addEventListener('click',(e) =>{
+        if(e.target.innerHTML== '='
+        ){
+            string = eval(string);
+            input.value = string;
+
+        }
+        else if(e.target.innerHTML == 'AC'){
+         string = "";
+         input.value = string;
+        }
+        else if(e.target.innerHTML == 'DEL'){
+            string = string.substring(0,string.length()-1);
+            input.value = string;
+        }
+        else{
+string += e.target.innerHTML;
+        input.value = string;
+        }
+        
+    })
+})
+
+
+
+
